@@ -17,8 +17,8 @@ function Home() {
     },
     {
       id: 3,
-      titulo: "Campanha de Vacinação",
-      descricao: "Vacinação contra gripe disponível no ambulatório da base aérea até 20/08.",
+      titulo: "Treinamento de Voo Noturno",
+      descricao: "Treinamento de voo noturno agendado para 20/08.",
       data: "03/08/2025",
     },
   ];

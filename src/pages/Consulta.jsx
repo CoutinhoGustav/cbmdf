@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Table } from "react-bootstrap";
+import { Form, Table, Button, Modal } from "react-bootstrap";
 import "../css/Consulta.css";
 
 function Consulta() {
@@ -64,6 +64,9 @@ function Consulta() {
     top3: "",
   });
 
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [ocorrenciasFiltradas, setOcorrenciasFiltradas] = useState(ocorrencias);
+
   const handleFiltroChange = (e) => {
     const { name, value } = e.target;
     setFiltro((prev) => ({
@@ -72,174 +75,182 @@ function Consulta() {
     }));
   };
 
-  // Função para converter data do formato DD/MM/YYYY para YYYY-MM-DD
   const formatarData = (dataStr) => {
     const [dia, mes, ano] = dataStr.split("/");
     return `${ano}-${mes.padStart(2, "0")}-${dia.padStart(2, "0")}`;
   };
 
-  const ocorrenciasFiltradas = ocorrencias.filter((o) => {
-    const matchData = filtro.data
-      ? formatarData(o.data) === filtro.data
-      : true;
-    const matchNatureza = filtro.natureza
-      ? o.natureza.toLowerCase().includes(filtro.natureza.toLowerCase())
-      : true;
-    const matchAeronave = filtro.aeronave
-      ? o.aeronave.toLowerCase().includes(filtro.aeronave.toLowerCase())
-      : true;
-    const matchComandante = filtro.comandante
-      ? o.tripulantes.comandante.toLowerCase().includes(filtro.comandante.toLowerCase())
-      : true;
-    const matchCopiloto = filtro.copiloto
-      ? o.tripulantes.copiloto.toLowerCase().includes(filtro.copiloto.toLowerCase())
-      : true;
-    const matchMedico = filtro.medico
-      ? (o.tripulantes.medico || "").toLowerCase().includes(filtro.medico.toLowerCase())
-      : true;
-    const matchEnfermeiro = filtro.enfermeiro
-      ? (o.tripulantes.enfermeiro || "").toLowerCase().includes(filtro.enfermeiro.toLowerCase())
-      : true;
-    const matchTop1 = filtro.top1
-      ? (o.tripulantes.top1 || "").toLowerCase().includes(filtro.top1.toLowerCase())
-      : true;
-    const matchTop2 = filtro.top2
-      ? (o.tripulantes.top2 || "").toLowerCase().includes(filtro.top2.toLowerCase())
-      : true;
-    const matchTop3 = filtro.top3
-      ? (o.tripulantes.top3 || "").toLowerCase().includes(filtro.top3.toLowerCase())
-      : true;
+  const buscar = () => {
+    const filtradas = ocorrencias.filter((o) => {
+      const matchData = filtro.data
+        ? formatarData(o.data) === filtro.data
+        : true;
+      const matchNatureza = filtro.natureza
+        ? o.natureza.toLowerCase().includes(filtro.natureza.toLowerCase())
+        : true;
+      const matchAeronave = filtro.aeronave
+        ? o.aeronave.toLowerCase().includes(filtro.aeronave.toLowerCase())
+        : true;
+      const matchComandante = filtro.comandante
+        ? o.tripulantes.comandante.toLowerCase().includes(filtro.comandante.toLowerCase())
+        : true;
+      const matchCopiloto = filtro.copiloto
+        ? o.tripulantes.copiloto.toLowerCase().includes(filtro.copiloto.toLowerCase())
+        : true;
+      const matchMedico = filtro.medico
+        ? (o.tripulantes.medico || "").toLowerCase().includes(filtro.medico.toLowerCase())
+        : true;
+      const matchEnfermeiro = filtro.enfermeiro
+        ? (o.tripulantes.enfermeiro || "").toLowerCase().includes(filtro.enfermeiro.toLowerCase())
+        : true;
+      const matchTop1 = filtro.top1
+        ? (o.tripulantes.top1 || "").toLowerCase().includes(filtro.top1.toLowerCase())
+        : true;
+      const matchTop2 = filtro.top2
+        ? (o.tripulantes.top2 || "").toLowerCase().includes(filtro.top2.toLowerCase())
+        : true;
+      const matchTop3 = filtro.top3
+        ? (o.tripulantes.top3 || "").toLowerCase().includes(filtro.top3.toLowerCase())
+        : true;
 
-    return (
-      matchData &&
-      matchNatureza &&
-      matchAeronave &&
-      matchComandante &&
-      matchCopiloto &&
-      matchMedico &&
-      matchEnfermeiro &&
-      matchTop1 &&
-      matchTop2 &&
-      matchTop3
-    );
-  });
+      return (
+        matchData &&
+        matchNatureza &&
+        matchAeronave &&
+        matchComandante &&
+        matchCopiloto &&
+        matchMedico &&
+        matchEnfermeiro &&
+        matchTop1 &&
+        matchTop2 &&
+        matchTop3
+      );
+    });
+
+    setOcorrenciasFiltradas(filtradas);
+    setMostrarModal(false);
+  };
 
   return (
     <div style={{ padding: 20 }}>
       <h2>Consulta de Ocorrências</h2>
 
-      <Form style={{ marginBottom: 20 }}>
-        <Form.Group className="mb-2" controlId="filtroData">
-          <Form.Label>Data</Form.Label>
-          <Form.Control
-            type="date"
-            name="data"
-            value={filtro.data}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
+      {/* Botão para abrir o modal */}
+      <Button variant="primary" onClick={() => setMostrarModal(true)}>
+        Filtrar Ocorrências
+      </Button>
 
-        <Form.Group className="mb-2" controlId="filtroNatureza">
-          <Form.Label>Natureza</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Natureza"
-            name="natureza"
-            value={filtro.natureza}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
+      {/* Modal de filtros */}
+      <Modal show={mostrarModal} onHide={() => setMostrarModal(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Filtros de Consulta</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-2">
+              <Form.Label>Data</Form.Label>
+              <Form.Control
+                type="date"
+                name="data"
+                value={filtro.data}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Natureza</Form.Label>
+              <Form.Control
+                type="text"
+                name="natureza"
+                value={filtro.natureza}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Aeronave</Form.Label>
+              <Form.Control
+                type="text"
+                name="aeronave"
+                value={filtro.aeronave}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Comandante</Form.Label>
+              <Form.Control
+                type="text"
+                name="comandante"
+                value={filtro.comandante}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Copiloto</Form.Label>
+              <Form.Control
+                type="text"
+                name="copiloto"
+                value={filtro.copiloto}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Médico</Form.Label>
+              <Form.Control
+                type="text"
+                name="medico"
+                value={filtro.medico}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Enfermeiro</Form.Label>
+              <Form.Control
+                type="text"
+                name="enfermeiro"
+                value={filtro.enfermeiro}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Top 3</Form.Label>
+              <Form.Control
+                type="text"
+                name="top3"
+                value={filtro.top3}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Top 2</Form.Label>
+              <Form.Control
+                type="text"
+                name="top2"
+                value={filtro.top2}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Top 1</Form.Label>
+              <Form.Control
+                type="text"
+                name="top1"
+                value={filtro.top1}
+                onChange={handleFiltroChange}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setMostrarModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={buscar}>
+            Buscar
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
-        <Form.Group className="mb-2" controlId="filtroAeronave">
-          <Form.Label>Aeronave</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Aeronave"
-            name="aeronave"
-            value={filtro.aeronave}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Comandante</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Comandante"
-            name="comandante"
-            value={filtro.comandante}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Copiloto</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Copiloto"
-            name="copiloto"
-            value={filtro.copiloto}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Médico</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Médico"
-            name="medico"
-            value={filtro.medico}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Enfermeiro</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Enfermeiro"
-            name="enfermeiro"
-            value={filtro.enfermeiro}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Top 3</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Top 3"
-            name="top3"
-            value={filtro.top3}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Top 2</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Top 2"
-            name="top2"
-            value={filtro.top2}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Top 1</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Filtrar por Top 1"
-            name="top1"
-            value={filtro.top1}
-            onChange={handleFiltroChange}
-          />
-        </Form.Group>
-      </Form>
-
-      <div className="tabela-scroll-container">
+      {/* Tabela de resultados */}
+      <div className="tabela-scroll-container" style={{ marginTop: 20 }}>
         <Table striped bordered hover responsive>
           <thead>
             <tr>
