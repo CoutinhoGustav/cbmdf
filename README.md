@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Projeto GAVOP - Painel de Aeronaves e Ocorrências
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um sistema web desenvolvido em React.js utilizando React Router para navegação e React Bootstrap para estilização dos componentes. Ele permite visualizar aeronaves, voos e ocorrências em um layout responsivo com um menu estilo de sidebar e nas telas com cards informativos.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Pré-requisitos
 
-### `npm start`
+Antes de iniciar, verifique se você tem o Node.js e o npm instalados:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+node -v
+npm -v
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Senão estiver instalado, baixe e instale o Node.js (que já inclui o npm) no site oficial:
 
-### `npm test`
+https://nodejs.org/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após a instalação, reinicie o terminal e verifique novamente as versões.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalação e Execução
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone o repositório:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/CoutinhoGustav/GAVOP.git
+cd gavop
+```
 
-### `npm run eject`
+2. **Instale as dependências:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash ou cmd
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Inicie o projeto em modo de desenvolvimento:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash ou cmd
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Acesse no navegador:
 
-## Learn More
+[http://localhost:3000]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##  Estrutura de Pastas:
 
-### Code Splitting
+```
+gavop/
+│
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── CardAeronave.jsx
+│   │   ├── CardVoo.jsx
+│   │   ├── CardVoo.css
+│   │   └── DashboardLayout.jsx
+│   ├── css/
+│   │   └── DashboardLayout.css
+│   ├── pages/
+│   │   ├── AeronaveDetalhes.jsx
+│   │   ├── Aeronaves.jsx
+│   │   ├── ConsultaOcorrencia.jsx
+│   │   ├── Home.jsx
+│   │   ├── Ocorrencias.jsx
+│   │   ├── Perfil.jsx
+│   │   └── Voos.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── index.js
+├── .gitignore
+├── package-lock.json
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Scripts Disponíveis:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Comandos             
 
-### Making a Progressive Web App
+| `npm start`- Inicia o servidor de desenvolvimento.
+| `npm run build`- Compila o projeto para produção.
+| `npm test`- Executa os testes (se aplicável).        
+| `npm run eject`- Exibe configurações ocultas do React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+##  Dependências:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Se algum erro de módulo aparecer, instale manualmente com:
 
-### Deployment
+```bash
+npm install react-router-dom react-bootstrap bootstrap
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+No arquivo `index.js`, certifique-se de importar:
 
-### `npm run build` fails to minify
+```js
+import 'bootstrap/dist/css/bootstrap.min.css';
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+##  Funcionalidades:
+
+- [x] Layout com sidebar  
+- [x] Cards de Aeronaves e Ocorrências  
+- [x] Navegação com React Router  
+- [ ] Integração com backend  
+- [ ] Autenticação de usuário

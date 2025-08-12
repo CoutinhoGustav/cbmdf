@@ -1,0 +1,32 @@
+.card-voo {
+  width: 18rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #8b0000, #8b0000);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-voo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-voo .card-body {
+  padding: 1.2rem;
+  border-left: 5px solid #2e2c2c;
+  color: #fefefe;
+}
+
+.card-voo .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fefefe;
+  margin-bottom: 1rem;
+}
+
+.card-voo .card-text {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: #fefefe;
+}

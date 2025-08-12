@@ -1,0 +1,57 @@
+:root {
+  --primaryColor: #f25c05;          
+  --secondaryColor: #8b0000;        
+  --mainTxtColor: #ffffff;          
+  --heroContentSpanColor: #ffdab9;  
+  --btnTxtColor: #ffffff;           
+  --socialIconColor: #b34700;       
+}
+
+/* Container da sidebar */
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: var(--secondaryColor);
+  color: var(--mainTxtColor);
+}
+
+/* Título "Menu" */
+.sidebar h4 {
+  color: var(--mainTxtColor);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Links do menu */
+.sidebar .nav-link {
+  color: var(--mainTxtColor);
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: var(--primaryColor);
+  border-radius: 4px;
+}
+
+/* Itens de título como "Aeronaves" ou "Ocorrências" */
+.sidebar .nav-item strong {
+  color: var(--heroContentSpanColor);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+/* Botão de logout */
+.sidebar .btn-outline-danger {
+  color: var(--btnTxtColor);
+  border-color: var(--btnTxtColor);
+  background-color: transparent;
+}
+
+.sidebar .btn-outline-danger:hover {
+  background-color: var(--primaryColor);
+  color: var(--mainTxtColor);
+  border-color: var(--primaryColor);
+}

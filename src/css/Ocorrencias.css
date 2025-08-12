@@ -1,0 +1,123 @@
+/* Página geral */
+.oc-page {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Título principal */
+.oc-heading {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+/* Botão nova ocorrência */
+.oc-btn-container {
+  display: flex;
+  
+  margin-bottom: 2rem;
+}
+
+.oc-btn-container button {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+}
+
+/* Modal de ocorrência */
+.oc-modal-wrapper {
+  width: 100%;
+}
+
+.oc-modal-content {
+  background: #8b0000;
+  color: white;
+  border-radius: 10px;
+}
+
+.oc-modal-title {
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+
+
+.oc-form-wrapper {
+  padding: 1rem 0.5rem;
+}
+
+.oc-form-section {
+  margin-bottom: 1.5rem;
+}
+
+.oc-form-section label {
+  font-size: 18px;
+  text-align: justify;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Estilo dos inputs */
+.oc-form-section input.form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ced4da;
+  color: #333;
+  font-weight: 500;
+}
+
+.oc-form-section input.form-control:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Rodapé do modal */
+.oc-footer {
+    background-color: transparent;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.oc-footer button {
+  width: 48%;
+  font-weight: 600;
+}
+
+/* Modal de confirmação */
+.modal-content {
+  border-radius: 8px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-footer button {
+  font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .oc-heading {
+    font-size: 1.5rem;
+  }
+
+  .oc-btn-container button {
+    width: 100%;
+  }
+
+  .oc-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .oc-footer button {
+    width: 100%;
+  }
+}

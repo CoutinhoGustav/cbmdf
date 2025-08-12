@@ -1,0 +1,12 @@
+.card-aeronave {
+  background-color: #f8f9fa;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.2s;
+}
+
+.card-aeronave:hover {
+  transform: scale(1.02);
+  border-color: #007bff;
+}

@@ -1,0 +1,25 @@
+.voo-card {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #004e92, #000428);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem;
+}
+
+.voo-title {
+  color: #ffe600;
+}
+
+.voo-hora {
+  color: white;
+  text-decoration: none;
+}
+
+
+.voo-local,
+.voo-hora {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}

@@ -1,0 +1,31 @@
+.card-aeronave {
+  width: 18rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #004080, #0059b3); /* Azul escuro para tom técnico */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-aeronave:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-aeronave .card-body {
+  padding: 1.2rem;
+  color: #ffffff;
+}
+
+.card-aeronave .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.card-aeronave .card-text {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+}
